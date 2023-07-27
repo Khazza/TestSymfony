@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+    <h1>Bienvenue sur notre site de restaurant !</h1>
+    
+    <h2>Nos catégories</h2>
+    
+    <ul>
+        {% for categorie in categories %}
+            <li>{{ categorie.libelle }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Nos plats</h2>
+    
+    <ul>
+        {% for plat in plats %}
+            <li>{{ plat.libelle }}</li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+    
