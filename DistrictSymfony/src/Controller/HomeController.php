@@ -13,8 +13,8 @@ class HomeController extends AbstractController
     #[Route('/home', name: 'app_home')]
     public function index(CategorieRepository $categorieRepository, PlatRepository $platRepository): Response
     {
-        $categories = $categorieRepository->findBy([], null, 6);
-        $plats = $platRepository->findBy([], null, 3);
+        $categories = $categorieRepository->getRandomCategories(6);
+        $plats = $platRepository->getRandomPlats(3);
     
         return $this->render('home/index.html.twig', [
             'categories' => $categories,
@@ -22,3 +22,4 @@ class HomeController extends AbstractController
         ]);
     }
 }
+

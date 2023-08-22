@@ -21,28 +21,26 @@ class CategorieRepository extends ServiceEntityRepository
         parent::__construct($registry, Categorie::class);
     }
 
-//    /**
-//     * @return Categorie[] Returns an array of Categorie objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    // public function getRandomCategories(int $limit): array
+    // {
+    //     $em = $this->getEntityManager();
 
-//    public function findOneBySomeField($value): ?Categorie
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //     $query = $em->createQueryBuilder()
+    //         ->select('c')
+    //         ->from('App\Entity\Categorie', 'c')
+    //         ->orderBy('RAND()')
+    //         ->setMaxResults($limit)
+    //         ->getQuery();
+
+    //     return $query->getResult();
+    // }
+    public function getRandomCategories(int $limit): array
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c')
+            ->orderBy('RAND()')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 }
